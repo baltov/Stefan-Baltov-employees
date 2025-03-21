@@ -1,0 +1,30 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 1GB
+  application:
+    name: Stefan-Baltov-employees
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: com.github.gwenn.hibernate.dialect.SQLiteDialect
+
+    open-in-view: true
+    show-sql: false
+  datasource:
+    url: jdbc:sqlite:${MYDB_SQLITE_PATH:./mydb.sqlite}
+    database-platform: org.hibernate.dialect.SQLiteDialect
+    driver-class-name: org.sqlite.JDBC
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+hawtio:
+  enabled: true                  # Explicitly enable Hawtio
+  authenticationEnabled: false
+
+server:
+  port: 9090
+

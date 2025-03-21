@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - MYDB_SQLITE_PATH=/mydb.sqlite
+    volumes:
+      - ./data/mydb.sqlite:/mydb.sqlite
+      - ./data/nginx.conf:/etc/nginx/nginx.conf
+      - ./data/files:/files
+    restart: unless-stopped
